@@ -1,5 +1,5 @@
 -- TRANSACTION FOR PATS DATABASE
 --
--- by (student_1) & (student_2)
+-- by Austin Bohn & Senna Parsa
 --
 --

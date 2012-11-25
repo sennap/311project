@@ -1,6 +1,6 @@
 -- TABLE STRUCTURE FOR PATS DATABASE
 --
--- by (student_1) & (student_2)
+-- by Austin Bohn & Senna Parsa
 --
 --
 
@@ -33,7 +33,7 @@ create table visits(
 	pet_id integer,
 	date date,
 	weight integer,
-	overnight_stay boolean,
+	overnight_stay boolean default false,  -- added this while doing functions
 	total_charge integer
 );
 
