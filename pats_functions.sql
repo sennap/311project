@@ -44,17 +44,19 @@ create trigger adjust_inventory
 	
 
 
-create or replace function determine_overnight() returns trigger as $$
+create or replace function determine_overnight(vid integer) returns trigger as $$
 	declare
-		pid integer;  --procedure id
-		vid integer;  --visit id
-		tid integer;  --treatment id
 		lot integer;  --length of time
 		
 	begin
-		pid = (select)
+		--assume we have the visit
+				
+		lot = (select sum(length_of_time) from procedures p join treatments t
+		on t.procedure_id = p.id where t.id in (select id from treatments t2
+			where t2.visit_id = $1))
+		
 		if lot >= 12 then
-			update visits set overnight_stay = true where id = vid;
+			update visits set overnight_stay = true where id = $1;
 		end if;
 	end
 	$$ language plpgsql;
@@ -63,7 +65,7 @@ create or replace function determine_overnight() returns trigger as $$
 
 
 create trigger if_overnight
-	after insert on procedures
+	after insert on treatments	
 	execute determine_overnight();	
 	
 	
