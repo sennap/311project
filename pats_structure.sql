@@ -22,7 +22,7 @@ create table pets(
 	id serial primary key,
 	name character varying(255),
 	animal_id integer,
-	owner_id ingteger,
+	owner_id integer,
 	female boolean,
 	date_of_birth date,
 	active boolean
@@ -82,7 +82,7 @@ create table procedures(
 	id serial primary key,
 	name character varying(255),
 	description character varying(255), --should this be bigger?
-	length_of_time integer --right type?
+	length_of_time integer, --right type?
 	active boolean
 );
 
@@ -101,7 +101,7 @@ create table procedure_costs(
 	id serial primary key,
 	procedure_id integer,
 	cost integer,
-	start_date date
+	start_date date,
 	end_date date
 );
 
